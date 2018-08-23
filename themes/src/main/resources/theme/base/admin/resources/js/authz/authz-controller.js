@@ -375,7 +375,9 @@ module.controller('ResourceServerResourceDetailCtrl', function($scope, $http, $r
                     for (i = 0; i < $scope.resource.scopes.length; i++) {
                         delete $scope.resource.scopes[i].text;
                     }
-                    for (var [key, value] of Object.entries($scope.resource.attributes)) {
+                    var entries = Object.entries($scope.resource.attributes);
+                    for (var key in entries) {
+                        var value = entries[key];
                         var values = value.toString().split(',');
 
                         $scope.resource.attributes[key] = [];
